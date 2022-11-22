@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -15,34 +16,34 @@
 
     <div class="calculator">
         <div class="calculator__display">
-            <div class="calculator__output">
-                <p class="calculator__output-result">0</p>
-            </div>
             <div class="calculator__input">
-                <p class="calculator__input-value">0</p>
+                <p class="calculator__input-value">0 123 456 789</p>
+            </div>
+            <div class="calculator__output">
+                <p class="calculator__output-result">0 123 456 789</p>
             </div>
         </div>
         <div class="calculator__keyboard">
-            <button class="calculator__keyboard-btn">C</button>
-            <button class="calculator__keyboard-btn">&radic;</button>
-            <button class="calculator__keyboard-btn">%</button>
-            <button class="calculator__keyboard-btn">&divide;</button>
-            <button class="calculator__keyboard-btn">7</button>
-            <button class="calculator__keyboard-btn">8</button>
-            <button class="calculator__keyboard-btn">9</button>
-            <button class="calculator__keyboard-btn">x</button>
-            <button class="calculator__keyboard-btn">4</button>
-            <button class="calculator__keyboard-btn">5</button>
-            <button class="calculator__keyboard-btn">6</button>
-            <button class="calculator__keyboard-btn">+</button>
-            <button class="calculator__keyboard-btn">3</button>
-            <button class="calculator__keyboard-btn">2</button>
-            <button class="calculator__keyboard-btn">1</button>
-            <button class="calculator__keyboard-btn">-</button>
-            <button class="calculator__keyboard-btn">0</button>
-            <button class="calculator__keyboard-btn">.</button>
-            <button class="calculator__keyboard-btn">+/-</button>
-            <button class="calculator__keyboard-btn">=</button>
+            <button class="calculator__keyboard-btn calculator__keyboard-btn--highlight clear">C</button>
+            <button class="calculator__keyboard-btn operator">&radic;</button>
+            <button class="calculator__keyboard-btn operator">%</button>
+            <button class="calculator__keyboard-btn operator">&divide;</button>
+            <button class="calculator__keyboard-btn number">7</button>
+            <button class="calculator__keyboard-btn number">8</button>
+            <button class="calculator__keyboard-btn number">9</button>
+            <button class="calculator__keyboard-btn operator">x</button>
+            <button class="calculator__keyboard-btn number">4</button>
+            <button class="calculator__keyboard-btn number">5</button>
+            <button class="calculator__keyboard-btn number">6</button>
+            <button class="calculator__keyboard-btn operator">+</button>
+            <button class="calculator__keyboard-btn number">3</button>
+            <button class="calculator__keyboard-btn number">2</button>
+            <button class="calculator__keyboard-btn number">1</button>
+            <button class="calculator__keyboard-btn operator">-</button>
+            <button class="calculator__keyboard-btn number">0</button>
+            <button class="calculator__keyboard-btn operator">.</button>
+            <button class="calculator__keyboard-btn operator">+/-</button>
+            <button class="calculator__keyboard-btn equals">=</button>
         </div>
     </div>
 

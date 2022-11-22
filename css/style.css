@@ -21,8 +21,9 @@ body {
   align-items: center;
   height: 100vh;
   font-size: 1.5rem;
-  font-family: "Montserrat", sans-serif;
-  background-color: #333;
+  font-family: "Roboto", sans-serif;
+  background-color: #dddddd;
+  font-weight: 500;
 }
 
 .calculator {
@@ -30,40 +31,65 @@ body {
   grid-template-rows: 1fr 2fr;
   height: 500px;
   width: 300px;
-  border: 1px solid #000;
-  box-shadow: 0px 5px 10px rgb(23, 23, 23);
-  background-color: rgb(42, 42, 42);
+  padding: 1em;
+  border: 3px solid #b9b9b9;
+  outline: 2px solid #a4a4a4;
+  box-shadow: 5px 5px 5px rgb(23, 23, 23);
+  background-color: #505050;
+  border-radius: 16px;
 }
 .calculator__display {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
-  margin: 1em;
+  padding: 0 0.5em;
   background-color: rgb(195, 254, 229);
   border-top: 3px solid #000;
   border-left: 3px solid #000;
   border-bottom: 3px solid #808080;
   border-right: 3px solid #808080;
-  line-height: 7rem;
+}
+.calculator__input, .calculator__output {
+  overflow: hidden;
+}
+.calculator__input {
+  grid-row: 1/2;
+  line-height: 2em;
+  font-weight: 400;
+}
+.calculator__output {
+  grid-row: 2/3;
+  padding-top: 1em;
+  line-height: 2.5em;
   text-align: right;
+  font-size: 2rem;
 }
 .calculator__keyboard {
   display: grid;
   grid-template-rows: repeat(5, 1fr);
   grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 2em;
-  grid-column-gap: 1em;
-  padding: 1em;
+  grid-column-gap: 0.5em;
+  padding: 1em 0;
 }
 .calculator__keyboard-btn {
   color: #fff;
+  background: linear-gradient(131deg, rgb(42, 42, 42) 0%, rgb(80, 80, 80) 60%);
   border-top: 2px solid #808080;
   border-left: 2px solid #808080;
   border-bottom: 2px solid #000;
   border-right: 2px solid #000;
+  outline: 1px solid #000;
+  cursor: pointer;
 }
-.calculator__keyboard-btn:hover {
+.calculator__keyboard-btn:hover, .calculator__keyboard-btn:focus {
   border-top: 2px solid #000;
   border-left: 2px solid #000;
   border-bottom: 2px solid #808080;
   border-right: 2px solid #808080;
+  transform: scale(0.99);
+}
+.calculator__keyboard-btn--highlight {
+  background: linear-gradient(135deg, rgb(181, 3, 3) 0%, rgb(255, 67, 67) 60%, rgb(255, 77, 77) 100%);
+  border-top: 2px solid #d4d4d4;
+  border-left: 2px solid #d4d4d4;
 }/*# sourceMappingURL=style.css.map */
