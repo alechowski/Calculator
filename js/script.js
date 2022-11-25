@@ -6,19 +6,29 @@ const numberBtns = document.querySelectorAll('.number');
 const operatorBtns = document.querySelectorAll('.operator');
 
 let value = '';
-let result = '';
+let result;
 let firstNumber;
 let secondNumber;
 let sign;
 
 const addNumbers = (e) => {
-	value += e.target.textContent;
-	input.textContent = value;
+
 	if (output.textContent === '0') {
 		output.textContent = '';
 		output.textContent += e.target.textContent;
+		value += e.target.textContent;
+		input.textContent = value;
+		firstNumber = input.textContent;
+	} else if (output.textContent == result) {
+		clearResult();
+		output.textContent += e.target.textContent;
+		value += e.target.textContent;
+		input.textContent = value;
+        
 	} else {
 		output.textContent += e.target.textContent;
+		value += e.target.textContent;
+		input.textContent = value;
 	}
 };
 
@@ -26,6 +36,11 @@ const deleteAll = () => {
 	value = '';
 	input.textContent = value;
 	output.textContent = '0';
+};
+
+const clearResult = () => {
+	result = '';
+	output.textContent = '';
 };
 
 const addOperator = (e) => {
@@ -37,7 +52,7 @@ const addOperator = (e) => {
 	} else if (input.textContent.lastIndexOf(' ') !== -1) {
 		return;
 	} else {
-		firstNumber = output.textContent;
+		firstNumber = input.textContent;
 		output.textContent = '';
 		value += ` ${e.target.textContent} `;
 		input.textContent = value;
