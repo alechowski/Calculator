@@ -81,15 +81,15 @@ body {
   outline: 1px solid #000;
   cursor: pointer;
 }
-.calculator__keyboard-btn:hover, .calculator__keyboard-btn:focus {
+.calculator__keyboard-btn--highlight {
+  background: linear-gradient(135deg, rgb(181, 3, 3) 0%, rgb(255, 67, 67) 60%, rgb(255, 77, 77) 100%);
+  border-top: 2px solid #d4d4d4;
+  border-left: 2px solid #d4d4d4;
+}
+.calculator__keyboard .pushed-btn {
   border-top: 2px solid #000;
   border-left: 2px solid #000;
   border-bottom: 2px solid #808080;
   border-right: 2px solid #808080;
   transform: scale(0.99);
-}
-.calculator__keyboard-btn--highlight {
-  background: linear-gradient(135deg, rgb(181, 3, 3) 0%, rgb(255, 67, 67) 60%, rgb(255, 77, 77) 100%);
-  border-top: 2px solid #d4d4d4;
-  border-left: 2px solid #d4d4d4;
 }/*# sourceMappingURL=style.css.map */

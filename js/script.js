@@ -4,6 +4,7 @@ const clearBtn = document.querySelector('.clear');
 const equalsBtn = document.querySelector('.equals');
 const numberBtns = document.querySelectorAll('.number');
 const operatorBtns = document.querySelectorAll('.operator');
+const allBtns = document.querySelectorAll('button');
 
 let value = '';
 let result;
@@ -11,7 +12,19 @@ let firstNumber;
 let secondNumber;
 let sign;
 
+function removeStyle () {
+	allBtns.forEach(function(btn) {
+		btn.classList.remove('pushed-btn')
+	})
+}
+
+function pushingButton () {
+	this.classList.add('pushed-btn')
+	setTimeout(removeStyle, 150)
+}
+
 const addNumbers = (e) => {
+
 
 	if (output.textContent === '0') {
 		output.textContent = '';
@@ -75,7 +88,7 @@ const expressionResult = () => {
 
 	switch (sign) {
 		case '+':
-			result = x + y;
+			result = (x * 10 + y * 10) / 10;
 			break;
 		case '-':
 			result = x - y;
@@ -108,3 +121,7 @@ operatorBtns.forEach((sign) => {
 clearBtn.addEventListener('click', deleteAll);
 
 equalsBtn.addEventListener('click', expressionResult);
+
+allBtns.forEach((btn) => {
+	btn.addEventListener('click', pushingButton);
+})

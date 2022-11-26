@@ -85,15 +85,6 @@ body {
 			outline: 1px solid #000;
 			cursor: pointer;
 
-			&:hover,
-			&:focus {
-				border-top: 2px solid #000;
-				border-left: 2px solid #000;
-				border-bottom: 2px solid #808080;
-				border-right: 2px solid #808080;
-				transform: scale(0.99);
-			}
-
 			&--highlight {
 				background: linear-gradient(
 					135deg,
@@ -104,6 +95,16 @@ body {
 				border-top: 2px solid #d4d4d4;
 				border-left: 2px solid #d4d4d4;
 			}
+
+		}
+		.pushed-btn {
+			border-top: 2px solid #000;
+			border-left: 2px solid #000;
+			border-bottom: 2px solid #808080;
+			border-right: 2px solid #808080;
+			transform: scale(0.99);
 		}
 	}
 }
+
+
