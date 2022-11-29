@@ -23,26 +23,24 @@ function pushingButton () {
 	setTimeout(removeStyle, 150)
 }
 
-const addNumbers = (e) => {
+const addNumbers = (e) => {	
+	
+	if (e.target.textContent === '.' && output.textContent.includes('.')) {
+		return
+	} 
 
-
-	if (output.textContent === '0') {
-		output.textContent = '';
-		output.textContent += e.target.textContent;
-		value += e.target.textContent;
-		input.textContent = value;
-		firstNumber = input.textContent;
-	} else if (output.textContent == result) {
-		clearResult();
-		output.textContent += e.target.textContent;
-		value += e.target.textContent;
-		input.textContent = value;
-        
-	} else {
-		output.textContent += e.target.textContent;
-		value += e.target.textContent;
-		input.textContent = value;
+	if(e.target.textContent === '.' && (output.textContent === '0' || output.textContent === '')) {
+		value = '0'
+		value += e.target.textContent
+		output.textContent = value
+	}else if (value === '' && value !== '0.' && e.target.textContent === '0' ) { 
+		return
 	}
+	else {
+		value += e.target.textContent
+		output.textContent = value
+	}
+
 };
 
 const deleteAll = () => {
@@ -57,20 +55,20 @@ const clearResult = () => {
 };
 
 const addOperator = (e) => {
-	if (input.textContent === '' && e.target.textContent === '-') {
-		value = '-';
-		output.textContent = value;
-	} else if (input.textContent === '') {
-		return;
-	} else if (input.textContent.lastIndexOf(' ') !== -1) {
-		return;
-	} else {
-		firstNumber = input.textContent;
-		output.textContent = '';
-		value += ` ${e.target.textContent} `;
-		input.textContent = value;
-		sign = e.target.textContent;
+	if(value === '0' || value === '') {
+		return
 	}
+	input.textContent = output.textContent
+	if(firstNumber == undefined) {
+		firstNumber = value
+	}else {
+		firstNumber = result
+	}
+	output.textContent = ''
+	value = ''
+	sign = e.target.textContent
+	input.textContent += e.target.textContent
+
 };
 
 const expressionResult = () => {
@@ -82,13 +80,14 @@ const expressionResult = () => {
 		return;
 	}
 
+	
 	secondNumber = output.textContent;
 	let x = Number(firstNumber);
 	let y = Number(secondNumber);
 
 	switch (sign) {
 		case '+':
-			result = (x * 10 + y * 10) / 10;
+			result = x + y;
 			break;
 		case '-':
 			result = x - y;
@@ -98,17 +97,17 @@ const expressionResult = () => {
 			break;
 		case '÷':
 			result = x / y;
-			break;
+			break;		
+			
 	}
 
 	output.textContent = result;
-	value = '';
-	firstNumber = '';
-	secondNumber = '';
+
 	if (output.textContent === result) {
 		return;
 	}
 };
+
 
 numberBtns.forEach((number) => {
 	number.addEventListener('click', addNumbers);
