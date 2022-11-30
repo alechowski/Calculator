@@ -45,21 +45,25 @@ const addNumbers = (e) => {
 
 const deleteAll = () => {
 	value = '';
-	input.textContent = value;
+	input.textContent = '';
 	output.textContent = '0';
+	firstNumber = '';
+	result ='';
 };
-
 
 const addOperator = (e) => {
 	if(value === '0' || value === '') {
 		return
 	}
+
 	input.textContent = output.textContent
-	if(firstNumber == undefined) {
+
+	if(firstNumber == undefined || firstNumber === '') {
 		firstNumber = value
 	}else {
 		firstNumber = result
 	}
+
 	output.textContent = ''
 	value = ''
 	sign = e.target.textContent
@@ -76,7 +80,7 @@ const expressionResult = () => {
 		return;
 	}
 
-	
+
 	secondNumber = output.textContent;
 	let x = Number(firstNumber);
 	let y = Number(secondNumber);
