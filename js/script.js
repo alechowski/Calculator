@@ -51,10 +51,6 @@ const deleteAll = () => {
 	output.textContent = '0';
 };
 
-const clearResult = () => {
-	result = '';
-	output.textContent = '';
-};
 
 const addOperator = (e) => {
 	if (input.textContent === '' && e.target.textContent === '-') {
