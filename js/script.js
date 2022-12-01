@@ -80,20 +80,44 @@ const expressionResult = () => {
 		return;
 	}
 
-
 	secondNumber = output.textContent;
+	
+	
+	Number.prototype.round = function (decimalPlaces) {
+		return +(Math.round(this + "e+" + decimalPlaces) + "e-" + decimalPlaces)
+	}
+
 	let x = Number(firstNumber);
 	let y = Number(secondNumber);
+	
+	let xLength = 0
+	let yLength = 0
+
+	if (Number.isInteger(x) === false || Number.isInteger(y) === false) {
+		xLength = x.toString()
+		xLength = xLength.substring(xLength.indexOf('.'))
+		xLength = xLength.length - 1
+
+		yLength = y.toString()
+		yLength = yLength.substring(yLength.indexOf('.'))
+		yLength = yLength.length - 1
+
+	}
+
+
 
 	switch (sign) {
 		case '+':
 			result = x + y;
+			result = result.round(xLength + yLength)
 			break;
 		case '-':
 			result = x - y;
+			result = result.round(xLength + yLength)
 			break;
 		case 'x':
 			result = x * y;
+			result = result.round(xLength + yLength)
 			break;
 		case '÷':
 			result = x / y;
