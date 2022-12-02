@@ -71,6 +71,10 @@ const addOperator = (e) => {
 
 };
 
+const showEquation = (x, y, sign) => {
+	input.textContent = `${x}${sign}${y}=`
+}
+
 const expressionResult = () => {
 	if (
 		input.textContent === '' ||
@@ -110,17 +114,21 @@ const expressionResult = () => {
 		case '+':
 			result = x + y;
 			result = result.round(xLength + yLength)
+			showEquation(x,y,sign)
 			break;
 		case '-':
 			result = x - y;
 			result = result.round(xLength + yLength)
+			showEquation(x,y,sign)
 			break;
 		case 'x':
 			result = x * y;
 			result = result.round(xLength + yLength)
+			showEquation(x,y,sign)
 			break;
 		case '÷':
 			result = x / y;
+			showEquation(x,y,sign)
 			break;		
 			
 	}
