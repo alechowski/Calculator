@@ -60,15 +60,29 @@ const addOperator = (e) => {
 
 	if(firstNumber == undefined || firstNumber === '') {
 		firstNumber = value
+		output.textContent = ''
+		if (e.target.textContent === '√') {
+			x = Number(firstNumber) 
+			x = Math.sqrt(x)
+			output.textContent = ''
+			output.textContent = x
+		}else if (e.target.textContent === '%') {
+			x = Number(firstNumber)
+			x = x/100
+			output.textContent = ''
+			output.textContent = x
+		}
+		
 	}else {
 		firstNumber = result
+		output.textContent = ''
 	}
-
-	output.textContent = ''
+	
 	value = ''
 	sign = e.target.textContent
 	input.textContent += e.target.textContent
 
+	
 };
 
 const showEquation = (x, y, sign) => {
