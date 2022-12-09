@@ -51,6 +51,19 @@ const deleteAll = () => {
 	result ='';
 };
 
+const calcRoot = (number) => {
+			a = Number(number) 
+			a = Math.sqrt(a)
+			root = []
+			root.push('√', number)
+			console.log(root);
+			output.textContent = ''
+			input.textContent = ''
+			input.textContent += root.join('')
+			output.textContent = a
+}
+
+
 const addOperator = (e) => {
 	if(value === '0' || value === '') {
 		return
@@ -62,10 +75,7 @@ const addOperator = (e) => {
 		firstNumber = value
 		output.textContent = ''
 		if (e.target.textContent === '√') {
-			x = Number(firstNumber) 
-			x = Math.sqrt(x)
-			output.textContent = ''
-			output.textContent = x
+			calcRoot(firstNumber)
 		}else if (e.target.textContent === '%') {
 			x = Number(firstNumber)
 			x = x/100
@@ -77,10 +87,17 @@ const addOperator = (e) => {
 		firstNumber = result
 		output.textContent = ''
 	}
-	
+
 	value = ''
 	sign = e.target.textContent
-	input.textContent += e.target.textContent
+
+	if (input.textContent.includes(sign)) {
+		return
+	} else {
+
+		input.textContent += e.target.textContent
+	}
+	
 
 	
 };
