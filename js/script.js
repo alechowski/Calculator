@@ -52,17 +52,23 @@ const deleteAll = () => {
 };
 
 const calcRoot = (number) => {
-			a = Number(number) 
-			a = Math.sqrt(a)
-			root = []
-			root.push('√', number)
-			console.log(root);
-			output.textContent = ''
-			input.textContent = ''
-			input.textContent += root.join('')
-			output.textContent = a
+	a = Number(number) 
+	a = Math.sqrt(a)
+	root = []
+	root.push('√', number)
+	console.log(root);
+	output.textContent = ''
+	input.textContent = ''
+	input.textContent += root.join('')
+	output.textContent = a
 }
 
+const calcPercent = (number) => {
+	x = Number(number)
+	x = x/100
+	output.textContent = ''
+	output.textContent = x
+}
 
 const addOperator = (e) => {
 	if(value === '0' || value === '') {
@@ -77,10 +83,7 @@ const addOperator = (e) => {
 		if (e.target.textContent === '√') {
 			calcRoot(firstNumber)
 		}else if (e.target.textContent === '%') {
-			x = Number(firstNumber)
-			x = x/100
-			output.textContent = ''
-			output.textContent = x
+			calcPercent(firstNumber)
 		}
 		
 	}else {
