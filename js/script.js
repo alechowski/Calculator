@@ -70,6 +70,14 @@ const calcPercent = (number) => {
 	output.textContent = x
 }
 
+const changeSign = (number) => {
+	a = Number(number)
+	a = a * (-1)
+	output.textContent = ''
+	output.textContent = a
+	input.textContent = output.textContent
+}
+
 const addOperator = (e) => {
 	if(value === '0' || value === '') {
 		return
@@ -84,6 +92,8 @@ const addOperator = (e) => {
 			calcRoot(firstNumber)
 		}else if (e.target.textContent === '%') {
 			calcPercent(firstNumber)
+		}else if (e.target.textContent === '+/-') {
+			changeSign(firstNumber)
 		}
 		
 	}else {
