@@ -52,7 +52,7 @@ const deleteAll = () => {
 };
 
 const calcRoot = (number) => {
-	a = Number(number) 
+	let a = Number(number) 
 	a = Math.sqrt(a)
 	root = []
 	root.push('√', number)
@@ -64,14 +64,14 @@ const calcRoot = (number) => {
 }
 
 const calcPercent = (number) => {
-	x = Number(number)
-	x = x/100
+	let a = Number(number)
+	a = a/100
 	output.textContent = ''
-	output.textContent = x
+	output.textContent = a
 }
 
-const changeSign = (number) => {
-	a = Number(number)
+const signChange = (number) => {
+	let a = Number(number)
 	a = a * (-1)
 	output.textContent = ''
 	output.textContent = a
@@ -93,7 +93,7 @@ const addOperator = (e) => {
 		}else if (e.target.textContent === '%') {
 			calcPercent(firstNumber)
 		}else if (e.target.textContent === '+/-') {
-			changeSign(firstNumber)
+			signChange(firstNumber)
 		}
 		
 	}else {
