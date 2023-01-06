@@ -4,6 +4,9 @@ const clearBtn = document.querySelector('.clear');
 const equalsBtn = document.querySelector('.equals');
 const numberBtns = document.querySelectorAll('.number');
 const operatorBtns = document.querySelectorAll('.operator');
+const percentBtn = document.querySelector('.percent');
+const rootBtn = document.querySelector('.root');
+const switchBtn = document.querySelector('.switch');
 const allBtns = document.querySelectorAll('button');
 
 let value = '';
@@ -12,112 +15,135 @@ let firstNumber;
 let secondNumber;
 let sign;
 
-function removeStyle () {
-	allBtns.forEach(function(btn) {
-		btn.classList.remove('pushed-btn')
-	})
+function removeStyle() {
+	allBtns.forEach(function (btn) {
+		btn.classList.remove('pushed-btn');
+	});
 }
 
-function pushingButton () {
-	this.classList.add('pushed-btn')
-	setTimeout(removeStyle, 150)
+function pushingButton() {
+	this.classList.add('pushed-btn');
+	setTimeout(removeStyle, 150);
 }
 
-const addNumbers = (e) => {	
-	
-	if (e.target.textContent === '.' && output.textContent.includes('.')) {
-		return
-	} 
-
-	if(e.target.textContent === '.' && (output.textContent === '0' || output.textContent === '')) {
-		value = '0'
-		value += e.target.textContent
-		output.textContent = value
-	}else if (value === '' && value !== '0.' && e.target.textContent === '0' ) { 
-		return
+const checkNumber = () => {
+	if (input.textContent.includes(sign)) {
+		secondNumber = value;
+	} else {
+		firstNumber = value;
 	}
-	else {
-		value += e.target.textContent
-		output.textContent = value
-	}
-
 };
+
+function addNumbers(e) {
+	if (e.target.textContent === '.' && output.textContent.includes('.')) {
+		return;
+	}
+
+	if (
+		e.target.textContent === '.' &&
+		(output.textContent === '0' || output.textContent === '')
+	) {
+		value = '0';
+		value += e.target.textContent;
+		output.textContent = value;
+	} else if (value === '' && value !== '0.' && e.target.textContent === '0') {
+		return;
+	} else {
+		value += e.target.textContent;
+		output.textContent = value;
+	}
+
+	checkNumber();
+}
 
 const deleteAll = () => {
 	value = '';
 	input.textContent = '';
 	output.textContent = '0';
 	firstNumber = '';
-	result ='';
+	secondNumber = '';
+	result = '';
 };
 
-const calcRoot = (number) => {
-	let a = Number(number) 
-	a = Math.sqrt(a)
-	root = []
-	root.push('√', number)
-	console.log(root);
-	output.textContent = ''
-	input.textContent = ''
-	input.textContent += root.join('')
-	output.textContent = a
-}
+const calcRoot = () => {
+	if (
+		(firstNumber !== undefined || firstNumber !== '') &&
+		(secondNumber === undefined || secondNumber === '')
+	) {
+		let a = Number(firstNumber);
+		a = Math.sqrt(a);
+		root = [];
+		root.push('√', firstNumber);
+		output.textContent = '';
+		input.textContent = '';
+		input.textContent += root.join('');
+		output.textContent = a;
+		firstNumber = a;
+	} else {
+		let a = Number(secondNumber);
+		a = Math.sqrt(a);
+		root = [];
+		root.push('√', secondNumber);
+		output.textContent = '';
+		input.textContent = '';
+		input.textContent += root.join('');
+		output.textContent = a;
+		secondNumber = a;
+	}
+};
 
-const calcPercent = (number) => {
-	let a = Number(number)
-	a = a/100
-	output.textContent = ''
-	output.textContent = a
-}
+const calcPercent = () => {
+	if (secondNumber !== undefined || secondNumber !== '') {
+		let a = Number(secondNumber);
+		a = (firstNumber * a) / 100;
+		output.textContent = '';
+		output.textContent = a;
+		secondNumber = a;
+	} else {
+		return;
+	}
+};
 
-const signChange = (number) => {
-	let a = Number(number)
-	a = a * (-1)
-	output.textContent = ''
-	output.textContent = a
-	input.textContent = output.textContent
-}
+const signChange = () => {
+	if (
+		(firstNumber !== undefined || firstNumber !== '') &&
+		(secondNumber === undefined || secondNumber === '')
+	) {
+		let a = Number(firstNumber);
+		a = a * -1;
+		output.textContent = '';
+		output.textContent = a;
+		input.textContent = output.textContent;
+		firstNumber = output.textContent;
+	} else {
+		let a = Number(secondNumber);
+		a = a * -1;
+		output.textContent = '';
+		output.textContent = a;
+		input.textContent = output.textContent;
+		secondNumber = output.textContent;
+	}
+};
 
 const addOperator = (e) => {
-	if(value === '0' || value === '') {
-		return
+	if (value === '0' || value === '') {
+		return;
 	}
 
-	input.textContent = output.textContent
-
-	if(firstNumber == undefined || firstNumber === '') {
-		firstNumber = value
-		output.textContent = ''
-		if (e.target.textContent === '√') {
-			calcRoot(firstNumber)
-		}else if (e.target.textContent === '%') {
-			calcPercent(firstNumber)
-		}else if (e.target.textContent === '+/-') {
-			signChange(firstNumber)
-		}
-		
-	}else {
-		firstNumber = result
-		output.textContent = ''
-	}
-
-	value = ''
-	sign = e.target.textContent
+	value = '';
+	sign = e.target.textContent;
+	input.textContent = output.textContent;
 
 	if (input.textContent.includes(sign)) {
-		return
+		return;
 	} else {
-
-		input.textContent += e.target.textContent
+		input.textContent += e.target.textContent;
 	}
-	
-
-	
 };
 
 const showEquation = (x, y, sign) => {
-	input.textContent = `${x}${sign}${y}=`
-}
+	input.textContent = `${x}${sign}${y}=`;
+};
 
 const expressionResult = () => {
 	if (
@@ -128,53 +154,46 @@ const expressionResult = () => {
 		return;
 	}
 
-	secondNumber = output.textContent;
-	
-	
 	Number.prototype.round = function (decimalPlaces) {
-		return +(Math.round(this + "e+" + decimalPlaces) + "e-" + decimalPlaces)
-	}
+		return +(Math.round(this + 'e+' + decimalPlaces) + 'e-' + decimalPlaces);
+	};
 
 	let x = Number(firstNumber);
 	let y = Number(secondNumber);
-	
-	let xLength = 0
-	let yLength = 0
+
+	let xLength = 0;
+	let yLength = 0;
 
 	if (Number.isInteger(x) === false || Number.isInteger(y) === false) {
-		xLength = x.toString()
-		xLength = xLength.substring(xLength.indexOf('.'))
-		xLength = xLength.length - 1
+		xLength = x.toString();
+		xLength = xLength.substring(xLength.indexOf('.'));
+		xLength = xLength.length - 1;
 
-		yLength = y.toString()
-		yLength = yLength.substring(yLength.indexOf('.'))
-		yLength = yLength.length - 1
-
+		yLength = y.toString();
+		yLength = yLength.substring(yLength.indexOf('.'));
+		yLength = yLength.length - 1;
 	}
-
-
 
 	switch (sign) {
 		case '+':
 			result = x + y;
-			result = result.round(xLength + yLength)
-			showEquation(x,y,sign)
+			result = result.round(xLength + yLength);
+			showEquation(x, y, sign);
 			break;
 		case '-':
 			result = x - y;
-			result = result.round(xLength + yLength)
-			showEquation(x,y,sign)
+			result = result.round(xLength + yLength);
+			showEquation(x, y, sign);
 			break;
 		case 'x':
 			result = x * y;
-			result = result.round(xLength + yLength)
-			showEquation(x,y,sign)
+			result = result.round(xLength + yLength);
+			showEquation(x, y, sign);
 			break;
 		case '÷':
 			result = x / y;
-			showEquation(x,y,sign)
-			break;		
-			
+			showEquation(x, y, sign);
+			break;
 	}
 
 	output.textContent = result;
@@ -183,7 +202,6 @@ const expressionResult = () => {
 		return;
 	}
 };
-
 
 numberBtns.forEach((number) => {
 	number.addEventListener('click', addNumbers);
@@ -199,4 +217,8 @@ equalsBtn.addEventListener('click', expressionResult);
 
 allBtns.forEach((btn) => {
 	btn.addEventListener('click', pushingButton);
-})
+});
+
+percentBtn.addEventListener('click', calcPercent);
+rootBtn.addEventListener('click', calcRoot);
+switchBtn.addEventListener('click', signChange);
