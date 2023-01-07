@@ -130,9 +130,14 @@ const addOperator = (e) => {
 		return;
 	}
 
+	if ((firstNumber !== '' && firstNumber !== undefined) && (secondNumber !== '' && secondNumber !== undefined)) {
+		expressionResult()
+	}
+	
 	value = '';
 	sign = e.target.textContent;
 	input.textContent = output.textContent;
+
 
 	if (input.textContent.includes(sign)) {
 		return;
@@ -198,7 +203,7 @@ const expressionResult = () => {
 
 	output.textContent = result;
 	firstNumber = result;
-
+	
 };
 
 numberBtns.forEach((number) => {
