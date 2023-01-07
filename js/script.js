@@ -133,7 +133,7 @@ const addOperator = (e) => {
 	if ((firstNumber !== '' && firstNumber !== undefined) && (secondNumber !== '' && secondNumber !== undefined)) {
 		expressionResult()
 	}
-	
+
 	value = '';
 	sign = e.target.textContent;
 	input.textContent = output.textContent;
@@ -142,7 +142,7 @@ const addOperator = (e) => {
 	if (input.textContent.includes(sign)) {
 		return;
 	} else {
-		input.textContent += e.target.textContent;
+		input.textContent += ` ${e.target.textContent} `;
 	}
 };
 
