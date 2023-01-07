@@ -142,7 +142,7 @@ const addOperator = (e) => {
 };
 
 const showEquation = (x, y, sign) => {
-	input.textContent = `${x}${sign}${y}=`;
+	input.textContent = `${x} ${sign} ${y} =`;
 };
 
 const expressionResult = () => {
@@ -197,10 +197,8 @@ const expressionResult = () => {
 	}
 
 	output.textContent = result;
+	firstNumber = result;
 
-	if (output.textContent === result) {
-		return;
-	}
 };
 
 numberBtns.forEach((number) => {
