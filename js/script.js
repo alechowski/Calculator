@@ -35,6 +35,10 @@ const checkNumber = () => {
 };
 
 function addNumbers(e) {
+	if(firstNumber === result) {
+		deleteAll()
+	}
+
 	if (e.target.textContent === '.' && output.textContent.includes('.')) {
 		return;
 	}
@@ -203,6 +207,7 @@ const expressionResult = () => {
 
 	output.textContent = result;
 	firstNumber = result;
+	value = ''
 	
 };
 
