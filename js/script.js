@@ -78,7 +78,6 @@ const calcRoot = () => {
 		a = Math.sqrt(a);
 		root = [];
 		root.push('√', firstNumber);
-		output.textContent = '';
 		input.textContent = '';
 		input.textContent += root.join('');
 		output.textContent = a;
@@ -88,7 +87,6 @@ const calcRoot = () => {
 		a = Math.sqrt(a);
 		root = [];
 		root.push('√', secondNumber);
-		output.textContent = '';
 		input.textContent = '';
 		input.textContent += root.join('');
 		output.textContent = a;
@@ -100,7 +98,6 @@ const calcPercent = () => {
 	if (secondNumber !== undefined || secondNumber !== '') {
 		let a = Number(secondNumber);
 		a = (firstNumber * a) / 100;
-		output.textContent = '';
 		output.textContent = a;
 		secondNumber = a;
 	} else {
@@ -115,14 +112,12 @@ const signChange = () => {
 	) {
 		let a = Number(firstNumber);
 		a = a * -1;
-		output.textContent = '';
 		output.textContent = a;
 		input.textContent = output.textContent;
 		firstNumber = output.textContent;
 	} else {
 		let a = Number(secondNumber);
 		a = a * -1;
-		output.textContent = '';
 		output.textContent = a;
 		input.textContent = output.textContent;
 		secondNumber = output.textContent;
@@ -207,7 +202,6 @@ const expressionResult = () => {
 
 	output.textContent = result;
 	firstNumber = result;
-	value = ''
 	
 };
 
