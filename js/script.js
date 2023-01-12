@@ -35,8 +35,8 @@ const checkNumber = () => {
 };
 
 function addNumbers(e) {
-	if(firstNumber === result) {
-		deleteAll()
+	if (firstNumber === result) {
+		deleteAll();
 	}
 
 	if (e.target.textContent === '.' && output.textContent.includes('.')) {
@@ -95,13 +95,13 @@ const calcRoot = () => {
 };
 
 const calcPercent = () => {
-	if (secondNumber !== undefined || secondNumber !== '') {
+	if (secondNumber !== undefined && secondNumber !== '') {
 		let a = Number(secondNumber);
 		a = (firstNumber * a) / 100;
 		output.textContent = a;
 		secondNumber = a;
 	} else {
-		return;
+		deleteAll();
 	}
 };
 
@@ -129,14 +129,18 @@ const addOperator = (e) => {
 		return;
 	}
 
-	if ((firstNumber !== '' && firstNumber !== undefined) && (secondNumber !== '' && secondNumber !== undefined)) {
-		expressionResult()
+	if (
+		firstNumber !== '' &&
+		firstNumber !== undefined &&
+		secondNumber !== '' &&
+		secondNumber !== undefined
+	) {
+		expressionResult();
 	}
 
 	value = '';
 	sign = e.target.textContent;
 	input.textContent = output.textContent;
-
 
 	if (input.textContent.includes(sign)) {
 		return;
@@ -202,7 +206,6 @@ const expressionResult = () => {
 
 	output.textContent = result;
 	firstNumber = result;
-	
 };
 
 numberBtns.forEach((number) => {
