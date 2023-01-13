@@ -14,6 +14,7 @@ let result;
 let firstNumber;
 let secondNumber;
 let sign;
+let previousNumber;
 
 function removeStyle() {
 	allBtns.forEach(function (btn) {
@@ -35,7 +36,7 @@ const checkNumber = () => {
 };
 
 function addNumbers(e) {
-	if (firstNumber === result) {
+	if (firstNumber === result && previousNumber !== secondNumber) {
 		deleteAll();
 	}
 
@@ -135,6 +136,7 @@ const addOperator = (e) => {
 		secondNumber !== '' &&
 		secondNumber !== undefined
 	) {
+		previousNumber = output.textContent
 		expressionResult();
 	}
 
