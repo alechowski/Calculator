@@ -90,6 +90,7 @@ const calcRoot = () => {
 		const root = [];
 		root.push('√', secondNumber);
 		input.textContent = '';
+		input.textContent = `${firstNumber} ${sign} `
 		input.textContent += root.join('');
 		output.textContent = a;
 		secondNumber = a;
