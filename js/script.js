@@ -1,3 +1,4 @@
+'use strict'
 const input = document.querySelector('.calculator__input-value');
 const output = document.querySelector('.calculator__output-result');
 const clearBtn = document.querySelector('.clear');
@@ -77,7 +78,7 @@ const calcRoot = () => {
 	) {
 		let a = Number(firstNumber);
 		a = Math.sqrt(a);
-		root = [];
+		const root = [];
 		root.push('√', firstNumber);
 		input.textContent = '';
 		input.textContent += root.join('');
@@ -86,7 +87,7 @@ const calcRoot = () => {
 	} else {
 		let a = Number(secondNumber);
 		a = Math.sqrt(a);
-		root = [];
+		const root = [];
 		root.push('√', secondNumber);
 		input.textContent = '';
 		input.textContent += root.join('');
