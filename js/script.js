@@ -202,8 +202,12 @@ const expressionResult = () => {
 			showEquation(x, y, sign);
 			break;
 		case '÷':
-			result = x / y;
-			showEquation(x, y, sign);
+			if(y === 0) {
+				result = 'Division by zero'
+			} else {
+				result = x / y;
+				showEquation(x, y, sign);
+			}
 			break;
 	}
 
