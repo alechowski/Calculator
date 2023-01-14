@@ -36,7 +36,7 @@ const checkNumber = () => {
 };
 
 function addNumbers(e) {
-	if (firstNumber === result && previousNumber !== secondNumber) {
+	if (firstNumber === result && previousNumber === secondNumber) {
 		deleteAll();
 	}
 
@@ -136,8 +136,8 @@ const addOperator = (e) => {
 		secondNumber !== '' &&
 		secondNumber !== undefined
 	) {
-		previousNumber = output.textContent
 		expressionResult();
+		previousNumber = ''
 	}
 
 	value = '';
@@ -208,6 +208,7 @@ const expressionResult = () => {
 
 	output.textContent = result;
 	firstNumber = result;
+	previousNumber = secondNumber;
 };
 
 numberBtns.forEach((number) => {
