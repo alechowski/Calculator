@@ -128,33 +128,29 @@ const signChange = () => {
 };
 
 const addOperator = (e) => {
-	if (value === '0' || value === '') {
+	if (firstNumber === '0' || firstNumber === '') {
 		return;
 	}
 
-	if (
-		firstNumber !== '' &&
-		firstNumber !== undefined &&
-		secondNumber !== '' &&
-		secondNumber !== undefined
-	) {
+	if (firstNumber === result && previousNumber === secondNumber) {
+		secondNumber = ''
+	} else if ((firstNumber !== '' && firstNumber !== undefined) && (secondNumber !== '' && secondNumber !== undefined)) {
 		expressionResult();
 		previousNumber = ''
-	}
+	}  
 
 	value = '';
 	sign = e.target.textContent;
-	input.textContent = output.textContent;
 
-	if (input.textContent.includes(sign)) {
+	if (input.textContent.includes(sign) && sign === e.target.textContent) {
 		return;
 	} else {
-		input.textContent += ` ${e.target.textContent} `;
+		showEquation(firstNumber, '', sign)
 	}
 };
 
 const showEquation = (x, y, sign) => {
-	input.textContent = `${x} ${sign} ${y} =`;
+	input.textContent = `${x} ${sign} ${y}`;
 };
 
 const expressionResult = () => {
