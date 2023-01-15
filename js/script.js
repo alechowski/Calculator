@@ -100,6 +100,8 @@ const calcRoot = () => {
 const calcPercent = () => {
 	if (secondNumber !== undefined && secondNumber !== '') {
 		let a = Number(secondNumber);
+		const percent = a + '%'
+		showEquation(firstNumber, percent, sign, '')
 		a = (firstNumber * a) / 100;
 		output.textContent = a;
 		secondNumber = a;
