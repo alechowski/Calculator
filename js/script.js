@@ -116,7 +116,6 @@ const signChange = () => {
 		let a = Number(firstNumber);
 		a = a * -1;
 		output.textContent = a;
-		input.textContent = output.textContent;
 		firstNumber = output.textContent;
 	} else if (previousNumber === secondNumber) {
 		let a = Number(result);
@@ -130,7 +129,6 @@ const signChange = () => {
 		let a = Number(secondNumber);
 		a = a * -1;
 		output.textContent = a;
-		input.textContent = output.textContent;
 		secondNumber = output.textContent;
 	}
 };
