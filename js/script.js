@@ -151,12 +151,12 @@ const addOperator = (e) => {
 	if (input.textContent.includes(sign) && sign === e.target.textContent) {
 		return;
 	} else {
-		showEquation(firstNumber, '', sign)
+		showEquation(firstNumber, '', sign, '')
 	}
 };
 
-const showEquation = (x, y, sign) => {
-	input.textContent = `${x} ${sign} ${y}`;
+const showEquation = (x, y, sign, equals) => {
+	input.textContent = `${x} ${sign} ${y} ${equals}`;
 };
 
 const expressionResult = () => {
@@ -192,24 +192,24 @@ const expressionResult = () => {
 		case '+':
 			result = x + y;
 			result = result.round(xLength + yLength);
-			showEquation(x, y, sign);
+			showEquation(x, y, sign, '=');
 			break;
 		case '-':
 			result = x - y;
 			result = result.round(xLength + yLength);
-			showEquation(x, y, sign);
+			showEquation(x, y, sign, '=');
 			break;
 		case 'x':
 			result = x * y;
 			result = result.round(xLength + yLength);
-			showEquation(x, y, sign);
+			showEquation(x, y, sign, '=');
 			break;
 		case '÷':
 			if(y === 0) {
 				result = 'Division by zero'
 			} else {
 				result = x / y;
-				showEquation(x, y, sign);
+				showEquation(x, y, sign, '=');
 			}
 			break;
 	}
